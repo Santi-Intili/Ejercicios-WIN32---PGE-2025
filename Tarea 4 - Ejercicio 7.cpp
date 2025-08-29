@@ -9,15 +9,15 @@ struct Item {
     std::wstring texto;   // Texto descriptivo del evento (ej: "WM_CHAR 'a'")
 };
 
-// Cola de eventos (máximo 10)
+// Cola de eventos (mÃ¡ximo 10)
 std::deque<Item> eventos;
 
-// ---------------- Función para añadir eventos ----------------
+// ---------------- FunciÃ³n para aÃ±adir eventos ----------------
 void AgregarEvento(const std::wstring& texto) {
-    // Insertamos el evento más reciente al inicio
+    // Insertamos el evento mÃ¡s reciente al inicio
     eventos.push_front({ texto });
 
-    // Si hay más de 10, eliminamos el más viejo (al final)
+    // Si hay mÃ¡s de 10, eliminamos el mÃ¡s viejo (al final)
     if (eventos.size() > 10) {
         eventos.pop_back();
     }
@@ -28,7 +28,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
 
         // Evento: el usuario presiona una tecla de texto
     case WM_CHAR: {
-        wchar_t ch = (wchar_t)wParam; // carácter presionado
+        wchar_t ch = (wchar_t)wParam; // carÃ¡cter presionado
         std::wstringstream ss;
         ss << L"WM_CHAR '" << ch << L"'";
         AgregarEvento(ss.str());              // lo guardamos
@@ -47,7 +47,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
         break;
     }
 
-                       // Evento: la ventana cambia de tamaño
+                       // Evento: la ventana cambia de tamaÃ±o
     case WM_SIZE: {
         int ancho = LOWORD(lParam);
         int alto = HIWORD(lParam);
@@ -63,11 +63,11 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
         PAINTSTRUCT ps;
         HDC hdc = BeginPaint(hwnd, &ps);
 
-        int y = 20; // posición vertical inicial
+        int y = 20; // posiciÃ³n vertical inicial
         for (const auto& e : eventos) {
             // Dibujamos cada evento, de arriba hacia abajo
             TextOutW(hdc, 20, y, e.texto.c_str(), (int)e.texto.size());
-            y += 20; // bajamos 20 píxeles para el siguiente
+            y += 20; // bajamos 20 pÃ­xeles para el siguiente
         }
 
         EndPaint(hwnd, &ps);
