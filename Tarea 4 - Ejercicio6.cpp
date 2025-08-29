@@ -11,7 +11,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
         wchar_t ch = (wchar_t)wParam;
 
         if (iswdigit(ch)) {
-            // Si es un número, lo añadimos
+            // Si es un nÃºmero, lo aÃ±adimos
             importe.push_back(ch);
             InvalidateRect(hwnd, NULL, TRUE);
         }
@@ -29,7 +29,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
                 InvalidateRect(hwnd, NULL, TRUE);
             }
         }
-        // Si no es válido, lo ignoramos
+        // Si no es vÃ¡lido, lo ignoramos
         return 0;
     }
     case WM_PAINT: {
@@ -65,7 +65,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int nCmdShow) {
     HWND hwnd = CreateWindowEx(
         0,
         CLASS_NAME,
-        L"Caja Registradora - Solo Números",
+        L"Caja Registradora - Solo NÃºmeros",
         WS_OVERLAPPEDWINDOW,
         CW_USEDEFAULT, CW_USEDEFAULT, 400, 200,
         NULL,
