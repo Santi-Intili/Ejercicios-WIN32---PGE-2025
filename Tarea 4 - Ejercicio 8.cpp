@@ -165,7 +165,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
         std::wstring vTam = to_w(g_w) + L" × " + to_w(g_h);
 
         DrawPanel(hdc, g_rc[IDX_NOMBRE], g_brNombre, L"Nombre", vNombre.c_str());
-        DrawPanel(hdc, g_rc[IDX_CLICS], g_brClicks, L"Clicls", vClicks.c_str());
+        DrawPanel(hdc, g_rc[IDX_CLICS], g_brClicks, L"Clicks", vClicks.c_str());
         DrawPanel(hdc, g_rc[IDX_TAM], g_brTam, L"Tamaño (W×H)", vTam.c_str());
 
         EndPaint(hWnd, &ps);
@@ -184,4 +184,5 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
     }
     return DefWindowProcW(hWnd, msg, wParam, lParam);
 }
+
 
